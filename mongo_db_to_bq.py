@@ -5,9 +5,10 @@ from google.oauth2 import service_account
 from datetime import datetime
 import pandas as pd
 import json
+import config
 
 # MongoDB connection
-uri = "mongodb+srv://deltanove2:9tJty2eExAnsKOZx@mongotogcp.geusz.mongodb.net/?retryWrites=true&w=majority&appName=mongoToGcp"
+uri = config.uri
 mongo_client = MongoClient(uri)
 db = mongo_client["sample_mflix"]
 collection = db["users"]
