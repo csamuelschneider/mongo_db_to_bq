@@ -11,7 +11,7 @@ import config
 uri = config.uri
 mongo_client = MongoClient(uri)
 db = mongo_client["sample_mflix"]
-collection = db["users"]
+collec = db["users"]
 
 #Setup BigQuery variables and GCP credential
 credential_path = r"projeto_2025\apache-beam-curso-3127e2e5d648.json"
@@ -28,7 +28,7 @@ temp_table_id = f"{project_id}.{dataset_id}.{temp_table}"
 
 # Fetch data (convert MongoDB documents to a list of dictionaries)
 mongo_data = []
-for doc in collection.find():
+for doc in collec.find():
     doc_id = str(doc["_id"])  # Convert ObjectId to string
     doc.pop("_id")  # Remove _id from the document
     mongo_data.append({"id": doc_id, "data": json.dumps(doc)})  # Store as JSON string]
