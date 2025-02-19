@@ -34,15 +34,15 @@ for doc in collec.find():
     mongo_data.append({"id": doc_id, "data": json.dumps(doc)})  # Store as JSON string]
 
 #BQ schema
-schema = [
-    bigquery.SchemaField("id", "STRING", mode="REQUIRED"),
-    bigquery.SchemaField("data", "STRING", mode="REQUIRED"),
-]
+# schema = [
+#     bigquery.SchemaField("id", "STRING", mode="REQUIRED"),
+#     bigquery.SchemaField("data", "STRING", mode="REQUIRED"),
+# ]
 
 try:
     bq_client.get_table(table_ref)
 except Exception:
-    table = bigquery.Table(table_ref, schema=schema)
+    table = bigquery.Table(table_ref)  #table = bigquery.Table(table_ref, schema=schema)
     bq_client.create_table(table)
 
 #temp table create and load
