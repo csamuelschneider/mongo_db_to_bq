@@ -5,7 +5,7 @@ from google.oauth2 import service_account
 from datetime import datetime
 import pandas as pd
 import json
-import mongo_db_to_bq.config as config
+import config
 
 # MongoDB connection
 uri = config.uri
